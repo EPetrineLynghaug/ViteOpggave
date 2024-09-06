@@ -15,11 +15,12 @@ export async function createContent() {
       if (country.capitalInfo && country.capitalInfo.latlng) {
         const [lat, lon] = country.capitalInfo.latlng;
         const weather = await fetchWeather(lat, lon);
-        alert(
+        li.textContent =
+          country.name.common +
+          ": " +
           `Weather in ${country.capital ? country.capital[0] : "Capital"}: ${
             weather.current_weather.temperature
-          }°C, Code: ${weather.current_weather.weathercode}`
-        );
+          }°C, Code: ${weather.current_weather.weathercode}`;
       } else {
         alert("Weather data not available for this country.");
       }
